@@ -131,4 +131,30 @@ Resultados da Inferência (Custo Estimado do Seguro):
 ✅ Camada GOLD (Inferência) salva com sucesso em: dev_catalogue.staging_schema.gold_insurance_predictions
 
 
-O projeto demonstra um fluxo MLOps totalmente funcional, desde a ingestão de dados
+O projeto demonstra um fluxo MLOps totalmente funcional, desde a ingestão de dados.
+
+---
+
+## 4. Próximos Passos e Prova de Valor (PoV)
+
+O registro do Pipeline Model no MLflow completa a fase de treinamento e persistência. O próximo passo do projeto é avançar para a implantação em produção (*Real-Time Serving*) e a mensuração do impacto nos negócios (*Proof of Value* - PoV).
+
+### 4.1. Implantação em Tempo Real (Web Application)
+
+O modelo treinado será exposto como um *endpoint* REST API, permitindo que uma aplicação web o consuma para cotações instantâneas.
+
+* **Objetivo:** Permitir que novos dados de clientes (idade, BMI, etc.) sejam usados como *input* no modelo registrado para retornar o custo estimado do seguro em tempo real.
+* **Serviço:** Utilização do **MLflow Model Serving** ou **Azure Machine Learning** para hospedar o modelo, garantindo que o Pipeline de pré-processamento completo seja executado automaticamente na inferência.
+* **Valor:** Auxiliar a equipe de vendas a formular propostas de seguro de forma instantânea e assertiva, otimizando o processo de cotação.
+
+### 4.2. Análise de Impacto no Power BI (Dashboard de Benefícios)
+
+Para medir o sucesso do projeto, será desenvolvido um *dashboard* de BI que conectará à Camada Gold e a dados reais de sinistralidade (uso do seguro).
+
+* **Fonte de Dados:** Tabela **Gold** (`gold_insurance_predictions`) e dados de uso real do seguro.
+* **Métricas Chave:**
+    * **Assertividade do Modelo:** Comparação entre o custo estimado (predição) e o custo real do seguro vendido.
+    * **Lucratividade Otimizada:** Demonstração de como a precisão do modelo impactou positivamente a margem de lucro, otimizando a relação entre o custo do seguro cobrado e o uso real (sinistralidade) por novos clientes.
+* **Ferramenta:** Power BI conectado diretamente ao **Delta Lake no Unity Catalog**.
+
+Essa etapa final fechará o ciclo MLOps, provando o valor do trabalho técnico diretamente no resultado financeiro da empresa.
